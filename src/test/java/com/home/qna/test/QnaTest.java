@@ -19,16 +19,16 @@ class QnaTest {
 	@Autowired
 	private QnaMapper qnaMapper;
 	
-	@Test
-	void test() throws Exception{
-		QnaVO qnaVO = new QnaVO();
-		for(int i=0; i<50; i++) {
-			qnaVO.setWriter("jw"+i);
-			qnaVO.setTitle("title");
-			qnaVO.setContents("contents");
-			int result = qnaMapper.setList(qnaVO);
-			String rs = String.valueOf(result);
-		}
-	}
+//	@Test
+//	void test() throws Exception{
+//		QnaVO qnaVO = new QnaVO();
+//		for(int i=0; i<50; i++) {
+//			qnaVO.setWriter("jw"+i);
+//			qnaVO.setTitle("title");
+//			qnaVO.setContents("contents");
+//			int result = qnaMapper.setList(qnaVO);
+//			String rs = String.valueOf(result);
+//		}
+//	}
 
 }
