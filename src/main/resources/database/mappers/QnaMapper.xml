@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+		    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		    "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
+		    
+<mapper namespace="com.home.qna.QnaMapper">
+
+	   	<insert id="setList" parameterType="QnaVO" useGeneratedKeys="true" keyProperty="num">
+		 INSERT INTO QNA VALUES(null,#{writer},#{title},#{contents},1,now(),1,1,1)
+		 </insert>
+	
+		 <select id="getList" resultType="QnaVO" parameterType="Pager">
+		 SELECT * from QNA 
+		 WHERE WRITER LIKE CONCAT('%',#{search},'%')
+		 ORDER BY NUM DESC
+		 LIMIT #{startRow}, #{perPage}
+		 </select>
+		 
+		 <select id="getListCount" resultType="Long" parameterType="Pager">
+		 SELECT COUNT(NUM) from QNA
+		 WHERE CONTENTS LIKE CONCAT('%',#{search},'%')
+		 ORDER BY NUM DESC 
+		</select>
+		 
+</mapper>
