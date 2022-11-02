@@ -5,6 +5,7 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="com.home.qna.QnaVO" alias="QnaVO"/>
+		<typeAlias type="com.home.qna.QnaFileVO" alias="QnaFileVO"/>
 		<typeAlias type="java.lang.String" alias="String"/>
 		<typeAlias type="java.lang.Long" alias="Long"/>
 		<typeAlias type="java.lang.Integer" alias="Integer"/>

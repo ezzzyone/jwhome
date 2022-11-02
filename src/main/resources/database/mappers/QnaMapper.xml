@@ -21,5 +21,13 @@
 		 WHERE CONTENTS LIKE CONCAT('%',#{search},'%')
 		 ORDER BY NUM DESC 
 		</select>
+		
+		 <insert id="setFileAdd" parameterType="QnaFileVO">
+		 INSERT INTO QNAFILE VALUES(null,#{num},#{fileName},#{oriName})
+		 </insert>
+		
+		 <select id="getFile" parameterType="QnaFileVO" resultType="QnaFileVO">
+		 SELECT * FROM QNAFILE WHERE FILENUM=#{fileNum}
+		 </select>
 		 
 </mapper>
