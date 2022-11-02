@@ -1,5 +1,5 @@
 
-let results = [false, false, false];
+let results = [false, false];
 
 // $("#writer").change(function(){
 //     // if(result){
