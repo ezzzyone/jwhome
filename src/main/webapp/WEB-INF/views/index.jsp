@@ -13,6 +13,7 @@
 <body>
 <h1>INDEX</h1>
 <h1><a href="./qna/list?page=${page}&search=${search}">QNA</a></h1>
+<h1><a href="./qna/write">write</a></h1>
 
 </body>
 </html>
