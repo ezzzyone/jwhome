@@ -30,4 +30,31 @@
 		 SELECT * FROM QNAFILE WHERE FILENUM=#{fileNum}
 		 </select>
 		 
+		   <select id="getDetail" parameterType="QnaVO" resultMap="detail">
+		  SELECT Q.*,QF.*
+ 			FROM QNA Q
+ 			LEFT JOIN
+ 			QNAFILE QF
+ 			ON Q.NUM = QF.NUM
+ 			WHERE Q.NUM=#{num}
+		</select>
+		
+			  <resultMap type="QnaVO" id="detail">
+      <id column="NUM" property="num"/>
+      <result column="WRITER" property="writer"/>
+      <result column="TITLE" property="title"/>
+      <result column="CONTENTS" property="contents"/>
+      <result column="HIT" property="hit"/>
+      <result column="REF" property="ref"/>
+      <result column="STEP" property="step"/>
+      <result column="DEPTH" property="depth"/>
+      
+      <collection property="qnaFileVOs" javaType="List" ofType="QnaFileVO">
+				<result column="FILENUM" property="fileNum"/>
+      			<result column="FILENAME" property="fileName"/>
+      			<result column="ORINAME" property="oriName"/>
+	 </collection>
+                              
+      </resultMap>
+		 
 </mapper>

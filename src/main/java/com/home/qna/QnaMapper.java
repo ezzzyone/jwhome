@@ -19,5 +19,7 @@ public interface QnaMapper {
 	public int setFileAdd(QnaFileVO fileVO)throws Exception;
 	
 	public QnaFileVO getFile(QnaFileVO fileVO)throws Exception;
+	
+	public QnaVO getDetail (QnaVO qnaVO)throws Exception;
 
 }

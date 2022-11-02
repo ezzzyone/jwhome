@@ -30,17 +30,16 @@ font-weight: bold;
               </div>
            </form:form>
            
-<h3>작성자 제목 내용</h3> <br>
+<h3>작성자 제목</h3> <br>
 
  <c:forEach items="${vo}" var="vo">
 ${vo.writer}
 <a href="./detail?num=${vo.num}">${vo.title}</a>
-${vo.contents} <br>
  </c:forEach>
  
  <!-- a태그를 버튼처럼 보이게 class 줄수있음 -->
  <div>
- <a class="btn btn-primary" href="/board/write">Write</a>
+ <a class="btn btn-primary" href="./write">Write</a>
  </div>
  <!-- pagination start -->
     <div class="chefs section-bg" style="padding-bottom: 10px;">

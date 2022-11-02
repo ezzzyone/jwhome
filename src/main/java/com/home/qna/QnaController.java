@@ -80,11 +80,22 @@ public class QnaController {
 		         return mv;
 		      }else {
 		    	  int result = qnaService.setList(qnaVO);
-		    	  mv.setViewName("board/list");
+		    	  mv.setViewName("redirect:../");
 					return mv;
 		      }
 
 	}
+	
+	@GetMapping("detail")
+	public ModelAndView detail(QnaVO qnaVO)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		qnaVO = qnaMapper.getDetail(qnaVO);
+		
+		mv.addObject("vo", qnaVO);
+		mv.setViewName("board/detail");
+		return mv;
+	}
+	
 	
 
 	

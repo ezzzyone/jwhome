@@ -23,6 +23,6 @@ public class QnaVO {
 	private Long ref;
 	private Long step;
 	private Long depth;
-	private List<QnaFileVO> fileVOs;
+	private List<QnaFileVO> qnaFileVOs;
 	private MultipartFile [] files;
 }

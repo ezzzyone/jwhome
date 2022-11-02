@@ -10,6 +10,8 @@
 <c:import url="../temp/boot.jsp"></c:import>
 <c:import url="../temp/summer.jsp"></c:import>
 <script defer src="/js/file.js"></script>
+<script defer src="/js/util.js"></script>
+<script defer src="/js/write.js"></script>
 </head>
 <body>
 <section class="container-fluid col-lg-10 mt-5">
@@ -20,21 +22,28 @@
     
          <div class="mb-3">
             <label for="formGroupExampleInput" class="form-label">작성자</label>
-            <form:input path="writer" cssClass="form-control"/>
+            <form:input path="writer" cssClass="form-control" id="writer"/>
             <!-- <input type="text" class="form-control" name="writer" placeholder="작성자를 입력하세요."> -->
-            <form:errors path="writer"></form:errors>
+            
+              <h5 id="h1" class="warning">
+       		  <form:errors path="writer"></form:errors>
+    		 </h5> <!--js메세지-->
          </div>
    
          <div class="mb-3">
            <label for="formGroupExampleInput" class="form-label">제목</label>
-           <form:input path="title" cssClass="form-control"/>
+           <form:input path="title" cssClass="form-control" id="title"/>
+           <h5 id="h2" class="warning">
            <form:errors path="title"></form:errors>
+           </h5>
          </div>
          
          <div class="mb-3">
            <label for="formGroupExampleInput2" class="form-label">글내용</label>
-           <form:textarea path="contents" cssClass="form-control"/>
+           <form:textarea path="contents" cssClass="form-control" id="contents"/>
+           <h5 id="h3" class="warning">
            <form:errors path="contents"></form:errors>
+           </h5>
          </div>
          
          <div class="mb-3" id="fileDiv">
@@ -58,7 +67,7 @@
          </div> -->
             
          <div style="display: inline-block; margin: 0 5px;  float: right;">
-            <form:button type="submit" class="btn btn-primary">작성완료</form:button>
+            <form:button type="button" class="btn btn-primary" id="writeBtn">작성완료</form:button>
          </div>   
       
    
