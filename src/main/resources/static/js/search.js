@@ -1,4 +1,4 @@
-$(".searchBtn").click(function(){
+$("#searchBtn").click(function(){
 
         $.ajax({
             type:"get",
@@ -10,7 +10,7 @@ $(".searchBtn").click(function(){
 
             },
             success : function(){
-                $(".searchFrm").submit();
+                $("#searchFrm").submit();
             },
             error   : function(){
           

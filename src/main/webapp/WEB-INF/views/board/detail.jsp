@@ -10,12 +10,28 @@
 <c:import url="../temp/boot.jsp"></c:import>
 </head>
 <body>
-${vo.title}
-${vo.contents}
-<br>
+	 <table class="table table-hover">
+           <thead>
+             <tr>
+            <th>Num</th>
+            <th>Writer</th>
+            <th>Title</th>
+            <th>Contents</th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr>
+			<th>${vo.num}</th>
+            <td>${vo.writer}</td>
+            <th>${vo.title}</th>
+            <td>${vo.contents}</td>
+            </tr>
+			</tbody>
+		</table>
+	
 <c:forEach items="${vo.qnaFileVOs}" var="my">
 <img src="/file/qna/${my.fileName}">
-<a href="/fileDown/qna?fileNum=${my.fileNum}">Img Down</a>
+<button type="button" class="btn btn-light" onclick="location.href='/fileDown/qna?fileNum=${my.fileNum}'"> <- Down</button>
 </c:forEach>
 
 </body>

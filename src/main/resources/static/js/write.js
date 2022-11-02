@@ -60,17 +60,6 @@ $("#title").on({
 });
 
 
-$("#contents").on({
-    change:(function(){
-        let result = nullCheck($("#contents").val(), $("#h3"), "contents");
-        results[2]=result;
-    }),
-    blur:(function(){
-        let result = nullCheck($("#contents").val(), $("#h3"), "contents");
-        results[2]=result;
-    })
-});
-
 $("#writeBtn").click(function(){
 
     console.log(results);

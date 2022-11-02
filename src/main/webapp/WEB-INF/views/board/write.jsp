@@ -15,7 +15,7 @@
 </head>
 <body>
 <section class="container-fluid col-lg-10 mt-5">
-   <h1>글쓰기 페이지</h1>
+   <h1>Write Page</h1>
 
    <div>
       <form:form action="write" method="post" enctype="multipart/form-data" modelAttribute="qnaVO" >
@@ -65,18 +65,14 @@
            <label for="formGroupExampleInput" class="form-label">file</label>
            <input type="file" name="files">
          </div> -->
-            
+          
          <div style="display: inline-block; margin: 0 5px;  float: right;">
-            <form:button type="button" class="btn btn-primary" id="writeBtn">작성완료</form:button>
+            <button class="btn btn-light" type="button" onclick="location='/'">Home</button>
+      		<button class="btn btn-light" type="button" onclick="location='./list'">List</button>
+      		 <form:button type="button" class="btn btn-light" id="writeBtn">Submit</form:button>
          </div>   
-      
-   
+    
       </form:form>
-   </div>
-   
-   <div style="margin-top: 10px;">
-      <button class="btn btn-secondary" type="button" onclick="location='/'">홈</button>
-      <button class="btn btn-primary" type="button" onclick="location='./list'">list</button>
    </div>
 
 </section>

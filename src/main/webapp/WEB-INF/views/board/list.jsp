@@ -13,8 +13,7 @@ font-weight: bold;
 }
 </style>
 <script defer src="/js/search.js"></script>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
+<c:import url="../temp/boot.jsp"></c:import>
 </head>
 <body>
   
@@ -30,12 +29,25 @@ font-weight: bold;
               </div>
            </form:form>
            
-<h3>작성자 제목</h3> <br>
-
- <c:forEach items="${vo}" var="vo">
-${vo.writer}
-<a href="./detail?num=${vo.num}">${vo.title}</a>
- </c:forEach>
+           <table class="table table-hover">
+           <thead>
+             <tr>
+            <th>Num</th>
+            <th>Writer</th>
+            <th>Title</th>
+			</tr>
+			</thead>
+			
+			<tbody>
+			<tr>
+			<c:forEach items="${vo}" var="vo">
+            <th>${vo.num}</th>
+            <td>${vo.writer}</td>
+            <td><a href="./detail?num=${vo.num}">${vo.title}</a></td>
+        	</tr>
+        	   </c:forEach>
+        	</tbody>
+        	</table>
  
  <!-- a태그를 버튼처럼 보이게 class 줄수있음 -->
  <div>
