@@ -17,16 +17,23 @@
 
 <sec:authentication property="Principal" var="user"/>
 <sec:authorize access="isAuthenticated()"> <!-- access="isAuthenticated()" 인증되면 true -->
-<h3 style="font-size: small; color: gray;"><spring:message code="welcome" arguments="${user.name}"></spring:message></h3>
-<h3 style="font-size: small; color: gray;"><spring:message code="welcome2" arguments="${user.id},${user.name}" argumentSeparator=","></spring:message></h3>
+<%-- <h3 style="font-size: small; color: gray;"><spring:message code="welcome" arguments="${user.name}"></spring:message></h3>
+<h3 style="font-size: small; color: gray;"><spring:message code="welcome2" arguments="${user.id},${user.name}" argumentSeparator=","></spring:message></h3> --%>
 <div>
+<button class="btn btn-light" type="button" onclick="location='./qna/list?page=${page}&search=${search}'">QNA List</button>
+<button class="btn btn-light" type="button" onclick="location='./qna/write'">QNA Write</button>
 <button class="btn btn-light" type="button" onclick="location='./member/mypage'">Mypage</button>
-<button class="btn btn-light" type="button" onclick="location='/out'">Logout</button>
+<form action="./member/logout" method="post">
+<sec:csrfInput/>
+<button class="btn btn-light" type="button" onclick="location='./member/logout'">Logout</button>
+</form>
+
 </div>
 </sec:authorize>
 
 <sec:authorize access="!isAuthenticated()">
 <div>
+<button class="btn btn-light" type="button" onclick="location='/oauth2/authorization/kakao'">Kakao Login</button>
 <button class="btn btn-light" type="button" onclick="location='./member/login'">Login</button>
 <button class="btn btn-light" type="button" onclick="location='./member/join'">join</button>
 <button class="btn btn-light" type="button" onclick="location='./qna/list?page=${page}&search=${search}'">QNA List</button>

@@ -31,39 +31,47 @@ public class QnaService {
 	
 	public int setList(QnaVO qnaVO)throws Exception{
 		
-	    int result = qnaMapper.setList(qnaVO);
+		 int result = qnaMapper.setList(qnaVO);
+			//String realPath = session.getServletContext().getRealPath("/static/upload/qna");
+		
+		if(qnaVO.getFiles() != null) {
+			
+			log.info("Path : {} "+path);
+			
+			File file = new File(path);
+			if(!file.exists()){
+				boolean check = file.mkdirs();
+				log.info("check : {}"+check);
+			}
+			
 
-		//String realPath = session.getServletContext().getRealPath("/static/upload/qna");
+			for(MultipartFile mf : qnaVO.getFiles()) {
+//				if(mf.isEmpty()) {
+//					log.info("------------- Exception 발생-----------");
+//					throw new Exception();
+//				}
+			      
+			      
 		
-		log.info("Path : {} "+path);
-		
-		File file = new File(path);
-		if(!file.exists()){
-			boolean check = file.mkdirs();
-			log.info("check : {}"+check);
+			         if(!mf.isEmpty()) {
+			            log.info("FileName : {} ", mf.getOriginalFilename());
+			            String fileName = fileManager.saveFile(mf, path);
+			            QnaFileVO qnaFileVO = new QnaFileVO();
+			            qnaFileVO.setFileName(fileName);
+			            qnaFileVO.setOriName(mf.getOriginalFilename());
+			            qnaFileVO.setNum(qnaVO.getNum());
+			            qnaMapper.setFileAdd(qnaFileVO);
+			            
+			         }
+			        
+			      
+			}
+			
+		}else {
+			
 		}
 		
-
-		for(MultipartFile mf : qnaVO.getFiles()) {
-//			if(mf.isEmpty()) {
-//				log.info("------------- Exception 발생-----------");
-//				throw new Exception();
-//			}
-		      
-		      
-	
-		         if(!mf.isEmpty()) {
-		            log.info("FileName : {} ", mf.getOriginalFilename());
-		            String fileName = fileManager.saveFile(mf, path);
-		            QnaFileVO qnaFileVO = new QnaFileVO();
-		            qnaFileVO.setFileName(fileName);
-		            qnaFileVO.setOriName(mf.getOriginalFilename());
-		            qnaFileVO.setNum(qnaVO.getNum());
-		            qnaMapper.setFileAdd(qnaFileVO);
-		         }
-		      
-		}
-		      return result;
+		  return result;
 		  
 	}
 	
