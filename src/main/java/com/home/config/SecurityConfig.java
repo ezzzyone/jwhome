@@ -101,7 +101,7 @@ public class SecurityConfig {
 	.logout() 
 	.logoutUrl("/member/logout") 
 //	.logoutUrl("/out") 
-	//.logoutSuccessUrl("/")
+	.logoutSuccessUrl("/")
 	  .logoutSuccessHandler(logoutSuccessCustom)
       .addLogoutHandler(logoutCustom)
       .invalidateHttpSession(true)   //세션을 지울거면 true 아니면 false

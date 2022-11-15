@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -32,6 +33,25 @@ public class QnaController {
 	
 	@Autowired
 	private QnaService qnaService;
+	
+	@PostMapping("summerFileDelete")
+	@ResponseBody
+	   public boolean setSummerFileDelete(String fileName)throws Exception{
+	      log.info("fileName ===>>> {}",fileName);
+	      
+	      return qnaService.setSummerFileDelete(fileName);
+	   }
+	
+	@PostMapping("summerFile")
+	@ResponseBody
+	public String setSummerFile(MultipartFile file) throws Exception{
+		log.info("File => {}", file);	
+	
+		String result = qnaService.setSummerFile(file);
+		
+		return result;
+	
+	}
 	
 	@GetMapping("list")
 	public ModelAndView list(Pager pager)throws Exception{

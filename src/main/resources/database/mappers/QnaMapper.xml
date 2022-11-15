@@ -30,6 +30,10 @@
 		 SELECT * FROM QNAFILE WHERE FILENUM=#{fileNum}
 		 </select>
 		 
+			 <delete id="setDeleteFile" parameterType="String"> 
+		 DELETE FROM QNAFILE WHERE FILEName=#{fileName}
+		 </delete>
+		 
 		   <select id="getDetail" parameterType="QnaVO" resultMap="detail">
 		  SELECT Q.*,QF.*
  			FROM QNA Q

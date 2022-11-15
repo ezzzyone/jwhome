@@ -82,8 +82,62 @@
 <script type="text/javascript">
     $('#contents').summernote({
         tabsize: 4,
-        height: 250
+        height: 250,
+        callbacks: {
+         onImageUpload: function(file) {
+         // upload image to server and create imgNode...
+         console.log("imgLog");
+         console.log("file ", file);
+         uploadFile(file);
+      
+        },
+      onMediaDelete:function(file){
+         console.log("onMediaDelete");
+         console.log("deleteFile =>", file);
+
+         deleteFile(file);
+      }
+      }
       });
+
+      function deleteFile(file){
+         console.log("src: ",file.attr("src"));
+         $.post("./summerFileDelete", {fileName:file.attr("src")}, function(result){
+
+         })
+      }
+
+
+      function uploadFile(file){
+         console.log("file ",file);
+         console.log("fileName ",file[0].name);
+         const formData = new FormData();
+         //input type = "file"
+         formData.append('file', file[0])
+
+         $.ajax({
+            type:"POST",
+            url:"summerFile",
+            data:formData,
+            cache: false,
+            processData:false,
+            contentType:false,
+            enctype:'multipart/form-data',
+            success:function(img){
+               console.log("IMG => ", img);
+               //img = "<img src="+img+">"
+               $('#contents').summernote('insertImage', img, file[0].name);
+            //onImageUpload 설정 
+            //$summernote.summernote('insertNode', imgNode);
+            ///$summernote. 에러 발생 -jquery 형식으로 바꿔줌 
+            //imgNode가 없음 = 이미지 태그 같은 것인데 임의로 만들어줘야
+            },
+            error:function(){
+               console.log("error");
+            }
+         })
+      }
+     
    </script>
 </body>
 </html>

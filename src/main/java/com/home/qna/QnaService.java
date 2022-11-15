@@ -29,6 +29,26 @@ public class QnaService {
 	@Autowired
 	private FileManager fileManager;
 	
+	   public boolean setSummerFileDelete(String fileName)throws Exception{
+		   
+		   	fileName = fileName.substring(fileName.lastIndexOf("/")+1);
+		   	log.info("fileName => {}",fileName);
+		      //삭제
+		  
+		         File file = new File(path, fileName);
+		      
+		      return file.delete();
+	   }
+	
+	public String setSummerFile(MultipartFile file)throws Exception{
+		//어디에 저장할 것이냐
+		String fileName = fileManager.saveFile(file, path);
+		fileName = "/file/qna/" + fileName;
+		//url요청해서 불러와야하니까file 경로로 .
+		//로컬 드라이브로 시작 하는거 아님.
+		return fileName;
+	}
+	
 	public int setList(QnaVO qnaVO)throws Exception{
 		
 		 int result = qnaMapper.setList(qnaVO);

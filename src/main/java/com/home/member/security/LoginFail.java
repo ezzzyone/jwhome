@@ -44,7 +44,7 @@ public class LoginFail implements AuthenticationFailureHandler {
 		rs ="비밀번호를 확인해주세요.";
 	}else if(exception instanceof InternalAuthenticationServiceException) {
 		rs ="아이디를 확인해주세요 ";
-	}else {rs ="로그인실ㅠㅐ ";}
+	}else {rs ="로그인실패";}
 		
 	//리다이렉트하기 - 인코딩 안해주면 에러남 
 	rs = URLEncoder.encode(rs,"UTF-8");

@@ -20,6 +20,10 @@ public interface QnaMapper {
 	
 	public QnaFileVO getFile(QnaFileVO fileVO)throws Exception;
 	
+	public int setDeleteFile(String fileName)throws Exception;
+	
 	public QnaVO getDetail (QnaVO qnaVO)throws Exception;
+	
+	
 
 }

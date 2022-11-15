@@ -2,9 +2,12 @@ package com.home.member;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextImpl;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,6 +35,34 @@ public class MemberController {
 	
 	@Autowired
 	private PasswordEncoder passwordEncoder;
+	
+		@GetMapping("delete")
+		public ModelAndView setDelete(HttpSession httpSession, String pw) throws Exception{
+			
+			ModelAndView mv = new ModelAndView();
+			//social , 일반 로그인 구분
+			SecurityContextImpl context = (SecurityContextImpl)httpSession.getAttribute("SPRING_SECURITY_CONTEXT");
+			Authentication authentication = context.getAuthentication();
+			MemberVO memberVO = (MemberVO)authentication.getPrincipal();
+		
+				log.info("MemberVO => {}", memberVO);
+				
+				int result = memberService.setDelete2(memberVO);
+				log.info("result => {}", result);
+				
+				if(result>0) {
+					//탈퇴 성공
+					mv.setViewName("redirect:/member/logout");
+				}else {
+					mv.setViewName("redirect:../");
+				}
+			return mv;
+		}
+	
+	   @GetMapping("logoutResult")
+	   public String socialLogout() throws Exception{
+	      return "redirect:../";
+	   }
 	
 		@GetMapping("login")
 		public void login(@RequestParam(defaultValue = "false", required = false)boolean error, String message, Model model ){

@@ -2,26 +2,52 @@ package com.home.member;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 
 import lombok.Data;
 
 @Data
-public class MemberVO implements UserDetails{
+public class MemberVO implements UserDetails, OAuth2User{
 	//UserDetails = 스프링에서 로그인 처리하기위한 VO같은 개념상속 
 	
 	@NotBlank
 	private String id;
+	@Size(max =10, min =4)
+	private String pw;
+	private String pw2;
+	@NotBlank
+	private String name;
+	@Email
+	@NotBlank
+	private String email;
+	private Boolean enabled;
+	private int num;
 	
+	private RoleVO roleVO;
 	private List<RoleVO> roleVOs;
+	
+	//OAuth2User, Token등 저장 
+	private Map<String, Object> attributes;
+	
+	//===========Social Login=============
+	//Kakao, Naver, Google
+	private String social;
+	
+	
+	
+	
 	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -65,17 +91,12 @@ public class MemberVO implements UserDetails{
 		// 계정 사용 여부 . true = 계정 활성화. 사용 가능 
 		return true;
 	}
-	@Size(max =10, min =4)
-	private String pw;
-	private String pw2;
-	@NotBlank
-	private String name;
-	@Email
-	@NotBlank
-	private String email;
-	private Boolean enabled;
-	private int num;
-	private RoleVO roleVO;
+	@Override
+	public Map<String, Object> getAttributes() {
+		// TODO Auto-generated method stub
+		return this.attributes;
+	}
+
 	
 	
 

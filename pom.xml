@@ -19,6 +19,12 @@
 	</properties>
 	<dependencies>
 	
+	<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-webflux -->
+      <dependency>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-starter-webflux</artifactId>
+      </dependency>
+	
 		<!--  스프링 검증 API
 	https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-validation -->
 <dependency>
